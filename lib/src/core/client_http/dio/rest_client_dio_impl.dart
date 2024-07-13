@@ -7,7 +7,7 @@ import 'package:red_host_app/src/core/client_http/rest_client_multipart.dart';
 class DioFactory {
   static Dio dio() {
     final baseOptions = BaseOptions(
-      baseUrl: '192.168.100.192:8000',
+      baseUrl: 'http://192.168.100.192:8000',
       connectTimeout: const Duration(milliseconds: 15000),
       receiveTimeout: const Duration(milliseconds: 15000),
     );

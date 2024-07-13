@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class UserEntity extends Equatable {
+abstract class UserEntity extends Equatable {
   final int id;
   final String name;
   final String email;
@@ -15,4 +15,6 @@ class UserEntity extends Equatable {
 
   @override
   List<Object?> get props => [id, name, email, phone];
+
+  Map<String, dynamic> toJson();
 }

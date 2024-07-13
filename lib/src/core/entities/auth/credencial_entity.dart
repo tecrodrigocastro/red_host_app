@@ -1,4 +1,4 @@
-class CredencialEntity {
+abstract class CredencialEntity {
   final String email;
   final String password;
 
@@ -6,4 +6,6 @@ class CredencialEntity {
     required this.email,
     required this.password,
   });
+
+  Map<String, dynamic> toJson();
 }
