@@ -1,4 +1,6 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:red_host_app/src/app/features/auth/presentation/pages/login_page.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
@@ -7,11 +9,9 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'RED HOST',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const Placeholder(),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.ligthTheme,
+      home: const LoginPage(),
     );
   }
 }
