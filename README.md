@@ -1,9 +1,9 @@
 # Red Host App [Construção]
 
 
-<img src="./design_system/assets/images/splash.png" alt="Splash Page" />
-<img src="./design_system/assets/images/login.png" alt="Login Page" />
-<img src="./design_system/assets/images/home.png" alt="Home Page" />
+<img src="./design_system/assets/images/splash.png" alt="Splash Page" style="width:200px;"/>
+<img src="./design_system/assets/images/login.png" alt="Login Page" style="width:200px;"/>
+<img src="./design_system/assets/images/home.png" alt="Home Page" style="width:200px;"/>
 
 
 Este é um aplicativo Flutter desenvolvido para um estudo de caso. Ele segue a arquitetura limpa (Clean Architecture) e usa BLoC para gerenciamento de estado, fpdart para programação funcional, GetIt para injeção de dependência e Dio para requisições HTTP e design system implementado como package.
@@ -16,7 +16,8 @@ Tou utilizando o backend feito em PHP/Laravel que esta em construção aqui:
 https://github.com/tecrodrigocastro/red-host-core
 
 ## Estrutura do Projeto
-A estrutura do projeto está organizada da seguinte forma:
+A estrutura do projeto está organizada da seguinte forma: <br>
+```css
 lib/
 │
 ├── src/
@@ -53,7 +54,7 @@ lib/
 │ │ │ ├── typedefs/
 │ │ │ ├── usecase/
 │ │ ├── utils/
-
+```
 Até o momento...
 
 ## Estrutura de Pastas
