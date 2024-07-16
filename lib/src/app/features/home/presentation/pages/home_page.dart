@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
     final authBloc = GetIt.I.get<AuthBloc>();
     final theme = Theme.of(context);
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         backgroundColor: theme.primaryColor,
         toolbarHeight: size.height * 0.2,
@@ -169,6 +170,7 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ),
+              SizedBox(height: size.height * 0.1),
             ],
           ),
         ),

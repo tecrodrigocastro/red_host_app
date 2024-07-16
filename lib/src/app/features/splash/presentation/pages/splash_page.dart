@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> {
           const Duration(seconds: 3),
           () {
             if (authBloc.state.authenticated) {
-              Navigator.pushReplacementNamed(context, '/home');
+              Navigator.pushReplacementNamed(context, '/base');
             } else {
               Navigator.pushReplacementNamed(context, '/login');
             }
