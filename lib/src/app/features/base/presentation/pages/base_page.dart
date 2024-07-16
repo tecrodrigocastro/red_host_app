@@ -30,6 +30,7 @@ class _BasePageState extends State<BasePage> {
     return Scaffold(
       extendBody: true,
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         onPageChanged: (index) {
           setState(() {
