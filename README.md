@@ -3,7 +3,7 @@
 
 <img src="./design_system/assets/images/splash.png" alt="Splash Page" style="width:200px;"/>
 <img src="./design_system/assets/images/login.png" alt="Login Page" style="width:200px;"/>
-<img src="./design_system/assets/images/home2.png" alt="Home Page" style="width:200px;"/>
+<img src="./design_system/assets/images/home.png" alt="Home Page" style="width:200px;"/>
 
 
 Este é um aplicativo Flutter desenvolvido para um estudo de caso. Ele segue a arquitetura limpa (Clean Architecture) e usa BLoC para gerenciamento de estado, fpdart para programação funcional, GetIt para injeção de dependência e Dio para requisições HTTP e design system implementado como package.
