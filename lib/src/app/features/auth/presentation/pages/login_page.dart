@@ -37,81 +37,109 @@ class _LoginPageState extends State<LoginPage> {
           padding: const EdgeInsets.all(12),
           child: Form(
             key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Image(
-                  image: AppIcons.kingLogo,
-                  height: size.height * 0.2,
-                ),
-                const SizedBox(height: 40),
-                AppInput(
-                  controller: emailEC,
-                  hintText: 'Email',
-                  validator: (p0) {
-                    if (p0.isEmpty) {
-                      return 'Campo obrigatório';
-                    }
-                    if (!p0.contains('@')) {
-                      return 'Email inválido';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20),
-                AppInput(
-                  controller: passwordEC,
-                  hintText: 'Senha',
-                  obscureText: true,
-                  validator: (p0) => p0.isEmpty ? 'Campo obrigatório' : null,
-                ),
-                const SizedBox(height: 40),
-                BlocConsumer<AuthBloc, AuthState>(
-                  listener: (context, state) {
-                    if (state.status == StateStatus.error) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(state.error!),
-                          backgroundColor: Colors.red,
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Image(
+                      image: AppIcons.kingLogo,
+                      height: size.height * 0.2,
+                    ),
+                    const SizedBox(height: 40),
+                    AppInput(
+                      controller: emailEC,
+                      hintText: 'Email',
+                      validator: (p0) {
+                        if (p0.isEmpty) {
+                          return 'Campo obrigatório';
+                        }
+                        if (!p0.contains('@')) {
+                          return 'Email inválido';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    AppInput(
+                      controller: passwordEC,
+                      hintText: 'Senha',
+                      obscureText: true,
+                      validator: (p0) =>
+                          p0.isEmpty ? 'Campo obrigatório' : null,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/register');
+                        },
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Não tem uma conta? ',
+                            style: theme.textTheme.bodyMedium!.copyWith(),
+                            children: [
+                              TextSpan(
+                                text: 'Crie uma',
+                                style: theme.textTheme.bodyMedium!.copyWith(
+                                  color: theme.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      );
-                    }
-
-                    if (state.status == StateStatus.success) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Login efetuado com sucesso'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
-                      Navigator.pushReplacementNamed(context, '/base');
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state.status == StateStatus.loading) {
-                      return CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(theme.primaryColor),
-                      );
-                    }
-                    return PrimaryButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          authBloc.add(
-                            LoginEvent(
-                              email: emailEC.text,
-                              password: passwordEC.text,
+                      ),
+                    ),
+                    const SizedBox(height: 40),
+                    BlocConsumer<AuthBloc, AuthState>(
+                      listener: (context, state) {
+                        if (state.status == StateStatus.error) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(state.error!),
+                              backgroundColor: Colors.red,
                             ),
                           );
                         }
+
+                        if (state.status == StateStatus.success) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Login efetuado com sucesso'),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                          Navigator.pushReplacementNamed(context, '/base');
+                        }
                       },
-                      title: 'Entrar',
-                    );
-                  },
+                      builder: (context, state) {
+                        if (state.status == StateStatus.loading) {
+                          return CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                theme.primaryColor),
+                          );
+                        }
+                        return PrimaryButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              authBloc.add(
+                                LoginEvent(
+                                  email: emailEC.text,
+                                  password: passwordEC.text,
+                                ),
+                              );
+                            }
+                          },
+                          title: 'Entrar',
+                        );
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

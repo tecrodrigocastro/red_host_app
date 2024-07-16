@@ -43,4 +43,43 @@ class AuthRepositoryImpl implements AuthRepositoryInterface {
       return output;
     }
   }
+
+  @override
+  Future<Output<UserEntity>> register({
+    required String email,
+    required String password,
+    required String name,
+    required String phone,
+  }) async {
+    try {
+      final response = await _authRemoteDatasource.post(
+        RestClientRequest(
+          path: '/api/register',
+          data: {
+            'email': email,
+            'password': password,
+            'name': name,
+            'phone': phone,
+          },
+        ),
+      );
+
+      if (response.statusCode == 201) {
+        final user = AppResponse<UserEntity>.fromJson(
+            response.data, (dynamic json) => UserModel.fromJson(json));
+        Output<UserEntity> output = Right(user);
+        return output;
+      }
+
+      Output<UserEntity> output =
+          Left(DefaultException(message: response.data['message']));
+
+      return output;
+    } catch (e) {
+      Output<UserEntity> output = const Left(
+        DefaultException(message: 'Erro ao realizar cadastro'),
+      );
+      return output;
+    }
+  }
 }
