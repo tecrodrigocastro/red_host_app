@@ -1,6 +1,7 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
+import 'package:red_host_app/src/app/features/hub/presentation/pages/hub_page.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({super.key});
@@ -20,9 +21,7 @@ class _BasePageState extends State<BasePage> {
     const Center(
       child: Text('Page 3'),
     ),
-    const Center(
-      child: Text('Page 4'),
-    ),
+    const HubPage(),
   ];
   int _currentIndex = 0;
   @override
