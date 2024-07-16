@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: theme.primaryColor,
         toolbarHeight: size.height * 0.2,
+        leading: null,
         title: RichText(
           text: TextSpan(
             text: 'Olá, \n',
