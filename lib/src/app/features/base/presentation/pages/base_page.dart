@@ -2,6 +2,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
 import 'package:red_host_app/src/app/features/hub/presentation/pages/hub_page.dart';
+import 'package:red_host_app/src/app/features/plans/presentation/pages/plans_page.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({super.key});
@@ -15,9 +16,7 @@ class _BasePageState extends State<BasePage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const Center(
-      child: Text('Page 2'),
-    ),
+    const PlansPage(),
     const Center(
       child: Text('Page 3'),
     ),

@@ -6,6 +6,8 @@ import 'package:red_host_app/src/app/features/auth/presentation/pages/login_page
 import 'package:red_host_app/src/app/features/auth/presentation/pages/register_page.dart';
 import 'package:red_host_app/src/app/features/base/presentation/pages/base_page.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
+import 'package:red_host_app/src/app/features/plans/presentation/bloc/plans_bloc.dart';
+import 'package:red_host_app/src/app/features/plans/presentation/pages/plans_page.dart';
 import 'package:red_host_app/src/app/features/splash/presentation/pages/splash_page.dart';
 import 'package:red_host_app/src/core/DI/dependency_injector.dart';
 
@@ -16,9 +18,8 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => injector<AuthBloc>(),
-        ),
+        BlocProvider(create: (context) => injector<AuthBloc>()),
+        BlocProvider(create: (context) => injector<PlansBloc>()),
       ],
       child: MaterialApp(
           title: 'RED HOST',
@@ -31,6 +32,7 @@ class AppWidget extends StatelessWidget {
             '/home': (context) => const HomePage(),
             '/splash': (context) => const SplashPage(),
             '/base': (context) => const BasePage(),
+            '/plans': (context) => const PlansPage(),
           }),
     );
   }
