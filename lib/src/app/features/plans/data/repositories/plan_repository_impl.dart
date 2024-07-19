@@ -29,19 +29,15 @@ class PlanRepositoryImpl implements PlanRepositoryInterface {
               .map((e) => PlanModel.fromJson(e as Map<String, dynamic>))
               .toList(),
         );
-        Output<List<PlanEntity>> output = Right(plans);
-
-        return output;
+        return Right(plans);
       }
-      Output<List<PlanEntity>> output = Left(
+      return Left(
         DefaultException(message: response.data['message']),
       );
-      return output;
     } catch (e) {
-      Output<List<PlanEntity>> output = Left(
+      return Left(
         DefaultException(message: e.toString()),
       );
-      return output;
     }
   }
 }
