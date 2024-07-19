@@ -76,6 +76,24 @@ class _PlansPageState extends State<PlansPage> {
                             final plan = state.plans[index];
                             return Card(
                               child: ListTile(
+                                leading: index.isOdd
+                                    ? Column(
+                                        children: [
+                                          Icon(
+                                            Icons.discount,
+                                            color: theme.primaryColor,
+                                          ),
+                                          Text(
+                                            'R\$ ${(plan.price * (index + 1)).toStringAsFixed(2)}',
+                                            style: theme.textTheme.bodySmall!
+                                                .copyWith(
+                                              decoration:
+                                                  TextDecoration.lineThrough,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : null,
                                 title: Text(
                                   'Plano ${plan.name}',
                                   style: theme.textTheme.bodyLarge,
@@ -86,7 +104,12 @@ class _PlansPageState extends State<PlansPage> {
                                 ),
                                 trailing: IconComponent(
                                   icon: Icons.arrow_forward_ios,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pushNamed(
+                                      '/plans/details',
+                                      arguments: {'plan': plan},
+                                    );
+                                  },
                                   color: theme.primaryColor,
                                 ),
                               ),
