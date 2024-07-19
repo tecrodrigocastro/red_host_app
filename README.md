@@ -24,42 +24,54 @@ https://github.com/tecrodrigocastro/red-host-core
 ## Estrutura do Projeto
 A estrutura do projeto está organizada da seguinte forma: <br>
 ```css
-lib/
-│
-├── src/
-│ ├── app/
-│ │ ├── features/
-│ │ │ ├── auth/
-│ │ │ │ ├── data/
-│ │ │ │ │ ├── datasources/
-│ │ │ │ │ ├── models/
-│ │ │ │ │ ├── repositories/
-│ │ │ │ ├── domain/
-│ │ │ │ │ ├── entities/
-│ │ │ │ │ ├── repositories/
-│ │ │ │ │ ├── usecases/
-│ │ │ │ ├── presentation/
-│ │ │ │ │ ├── bloc/
-│ │ │ │ │ │ ├── auth_bloc.dart
-│ │ │ │ │ │ ├── auth_event.dart
-│ │ │ │ │ │ ├── auth_state.dart
-│ │ │ │ │ ├── pages/
-│ │ │ │ │ │ ├── login_page.dart
-│ │ │ │ │ ├── widgets/
-│ │ │ ├── home/
-│ │ │ │ ├── data/
-│ │ │ │ ├── domain/
-│ │ │ │ ├── presentation/
-│ │ │ ├── splash/
-│ │ ├── core/
-│ │ │ ├── client_http/
-│ │ │ ├── DI/
-│ │ │ ├── entities/
-│ │ │ ├── enums/
-│ │ │ ├── errors/
-│ │ │ ├── typedefs/
-│ │ │ ├── usecase/
-│ │ ├── utils/
+.
+├── design_system/
+│   └── lib/
+│       ├── src/
+│       │   ├── buttons
+│       │   ├── cards
+│       │   ├── icons
+│       │   ├── images
+│       │   ├── inputs
+│       │   └── theme
+│       └── design_system.dart
+└── lib/
+    └── src/
+        └── app/
+            ├── features/
+            │   ├── auth/
+            │   │   ├── data/
+            │   │   │   ├── datasources/
+            │   │   │   │   └── auth_remote_datasource.dart
+            │   │   │   ├── models/
+            │   │   │   │   ├── credencial_model.dart
+            │   │   │   │   └── user_model.dart
+            │   │   │   └── repositories/
+            │   │   │       └── auth_repository_impl.dart
+            │   │   ├── domain/
+            │   │   │   ├── entities/
+            │   │   │   ├── repositores/
+            │   │   │   │   └── auth_repository_interface.dart
+            │   │   │   └── usecase/
+            │   │   │       ├── login_usecase.dart
+            │   │   │       └── register_usecase.dart
+            │   │   └── presentation/
+            │   │       ├── bloc/
+            │   │       │   ├── auth_bloc.dart
+            │   │       │   ├── auth_event.dart
+            │   │       │   └── auth_state.dart
+            │   │       ├── pages/
+            │   │       │   ├── login_page.dart
+            │   │       │   └── register_page.dart
+            │   │       └── widgets/
+            │   ├── base
+            │   ├── home
+            │   ├── hub
+            │   ├── plans
+            │   └── splash
+            ├── core
+            ├── app_widget.dart
+            └── main.dart
 ```
 Até o momento...
 
