@@ -7,6 +7,7 @@ import 'package:red_host_app/src/app/features/auth/presentation/pages/register_p
 import 'package:red_host_app/src/app/features/base/presentation/pages/base_page.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/bloc/plans_bloc.dart';
+import 'package:red_host_app/src/app/features/plans/presentation/pages/plan_details_page.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/pages/plans_page.dart';
 import 'package:red_host_app/src/app/features/splash/presentation/pages/splash_page.dart';
 import 'package:red_host_app/src/core/DI/dependency_injector.dart';
@@ -33,6 +34,10 @@ class AppWidget extends StatelessWidget {
             '/splash': (context) => const SplashPage(),
             '/base': (context) => const BasePage(),
             '/plans': (context) => const PlansPage(),
+            '/plans/details': (context) {
+              final args = ModalRoute.of(context)!.settings.arguments as Map;
+              return PlanDetailsPage(plan: args['plan']);
+            },
           }),
     );
   }
