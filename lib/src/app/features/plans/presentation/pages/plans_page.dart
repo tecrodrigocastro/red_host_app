@@ -2,6 +2,7 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/bloc/plans_bloc.dart';
+import 'package:red_host_app/src/core/extensions/mega_byte_extension.dart';
 import 'package:red_host_app/src/core/utils/loading_start.dart';
 
 class PlansPage extends StatefulWidget {
@@ -75,7 +76,129 @@ class _PlansPageState extends State<PlansPage> {
                           itemBuilder: (context, index) {
                             final plan = state.plans[index];
                             return Card(
-                              child: ListTile(
+                              child: Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Plano ${plan.name}',
+                                      style: theme.textTheme.bodyMedium,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      plan.description,
+                                      style: theme.textTheme.bodySmall,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                            RichText(
+                                              text: TextSpan(
+                                                text: 'Disco\n',
+                                                style:
+                                                    theme.textTheme.bodySmall,
+                                                children: [
+                                                  TextSpan(
+                                                    text: plan
+                                                        .diskSpace.toGigabytes,
+                                                    style: theme
+                                                        .textTheme.bodySmall!
+                                                        .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            RichText(
+                                              text: TextSpan(
+                                                text: 'Banda\n',
+                                                style:
+                                                    theme.textTheme.bodySmall,
+                                                children: [
+                                                  TextSpan(
+                                                    text: plan
+                                                        .bandwidth.toGigabytes,
+                                                    style: theme
+                                                        .textTheme.bodySmall!
+                                                        .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            RichText(
+                                              text: TextSpan(
+                                                text: 'Emails\n',
+                                                style:
+                                                    theme.textTheme.bodySmall,
+                                                children: [
+                                                  TextSpan(
+                                                    text: plan.emailAccounts
+                                                        .toString(),
+                                                    style: theme
+                                                        .textTheme.bodySmall!
+                                                        .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        index.isOdd
+                                            ? Icon(
+                                                Icons.discount,
+                                                color: theme.primaryColor,
+                                              )
+                                            : const SizedBox.shrink(),
+                                        index.isOdd
+                                            ? Text(
+                                                'R\$ ${(plan.price * (index + 1)).toStringAsFixed(2)}',
+                                                style: theme
+                                                    .textTheme.bodySmall!
+                                                    .copyWith(
+                                                  decoration: TextDecoration
+                                                      .lineThrough,
+                                                  color: AppColors.secondary,
+                                                ),
+                                              )
+                                            : const SizedBox.shrink(),
+                                        Text(' R\$ ${plan.price}',
+                                            style: theme.textTheme.displayLarge!
+                                                .copyWith(
+                                              color: theme.primaryColor,
+                                            )),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+                                    PrimaryButton(
+                                      onPressed: () {},
+                                      title: 'Contratar',
+                                    ),
+                                  ],
+                                ),
+                              ), /* ListTile(
                                 leading: index.isOdd
                                     ? Column(
                                         children: [
@@ -112,7 +235,7 @@ class _PlansPageState extends State<PlansPage> {
                                   },
                                   color: theme.primaryColor,
                                 ),
-                              ),
+                              ), */
                             );
                           },
                         ),
