@@ -6,6 +6,7 @@ import 'package:red_host_app/src/app/features/auth/presentation/pages/login_page
 import 'package:red_host_app/src/app/features/auth/presentation/pages/register_page.dart';
 import 'package:red_host_app/src/app/features/base/presentation/pages/base_page.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
+import 'package:red_host_app/src/app/features/invoices/presentation/pages/invoices_page.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/bloc/plans_bloc.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/pages/plan_details_page.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/pages/plans_page.dart';
@@ -23,22 +24,24 @@ class AppWidget extends StatelessWidget {
         BlocProvider(create: (context) => injector<PlansBloc>()),
       ],
       child: MaterialApp(
-          title: 'RED HOST',
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.ligthTheme,
-          initialRoute: '/splash',
-          routes: {
-            '/login': (context) => const LoginPage(),
-            '/register': (context) => const RegisterPage(),
-            '/home': (context) => const HomePage(),
-            '/splash': (context) => const SplashPage(),
-            '/base': (context) => const BasePage(),
-            '/plans': (context) => const PlansPage(),
-            '/plans/details': (context) {
-              final args = ModalRoute.of(context)!.settings.arguments as Map;
-              return PlanDetailsPage(plan: args['plan']);
-            },
-          }),
+        title: 'RED HOST',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.ligthTheme,
+        initialRoute: '/splash',
+        routes: {
+          '/login': (context) => const LoginPage(),
+          '/register': (context) => const RegisterPage(),
+          '/home': (context) => const HomePage(),
+          '/splash': (context) => const SplashPage(),
+          '/base': (context) => const BasePage(),
+          '/plans': (context) => const PlansPage(),
+          '/plans/details': (context) {
+            final args = ModalRoute.of(context)!.settings.arguments as Map;
+            return PlanDetailsPage(plan: args['plan']);
+          },
+          '/invoices': (context) => const InvoicesPage(),
+        },
+      ),
     );
   }
 }

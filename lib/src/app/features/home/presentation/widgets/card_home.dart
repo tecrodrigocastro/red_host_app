@@ -37,14 +37,19 @@ class CardHome extends StatelessWidget {
                   ),
                   backgroundColor: theme.primaryColor,
                 ),
-                Chip(
-                  label: Text(
-                    'Ver faturas',
-                    style: theme.textTheme.bodyMedium!.copyWith(
-                      color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/invoices');
+                  },
+                  child: Chip(
+                    label: Text(
+                      'Ver faturas',
+                      style: theme.textTheme.bodyMedium!.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
+                    backgroundColor: theme.primaryColor,
                   ),
-                  backgroundColor: theme.primaryColor,
                 ),
               ],
             )
