@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:red_host_app/src/app/features/plans/domain/entities/plan_entity.dart';
+import 'package:red_host_app/src/core/entities/plan/plan_entity.dart';
 
 class PlanDetailsPage extends StatelessWidget {
   const PlanDetailsPage({super.key, required this.plan});

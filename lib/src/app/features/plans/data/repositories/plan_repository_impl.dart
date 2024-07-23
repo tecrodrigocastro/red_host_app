@@ -1,10 +1,10 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:red_host_app/src/app/features/plans/data/datasources/plans_remote_datasource.dart';
 import 'package:red_host_app/src/app/features/plans/data/models/plan_model.dart';
-import 'package:red_host_app/src/app/features/plans/domain/entities/plan_entity.dart';
 import 'package:red_host_app/src/app/features/plans/domain/repositories/plan_repository_interface.dart';
 import 'package:red_host_app/src/core/client_http/app_response.dart';
 import 'package:red_host_app/src/core/client_http/client_http.dart';
+import 'package:red_host_app/src/core/entities/plan/plan_entity.dart';
 import 'package:red_host_app/src/core/errors/errors.dart';
 import 'package:red_host_app/src/core/typedefs/types.dart';
 

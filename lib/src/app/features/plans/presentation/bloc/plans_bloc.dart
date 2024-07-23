@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:red_host_app/src/app/features/plans/domain/entities/plan_entity.dart';
 import 'package:red_host_app/src/app/features/plans/domain/usecases/get_plans_usecase.dart';
+import 'package:red_host_app/src/core/entities/plan/plan_entity.dart';
 import 'package:red_host_app/src/core/usecase/usecase_interface.dart';
 
 part 'plans_event.dart';
