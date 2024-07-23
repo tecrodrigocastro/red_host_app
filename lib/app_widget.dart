@@ -33,7 +33,10 @@ class AppWidget extends StatelessWidget {
           '/register': (context) => const RegisterPage(),
           '/home': (context) => const HomePage(),
           '/splash': (context) => const SplashPage(),
-          '/base': (context) => const BasePage(),
+          '/base': (context) {
+            final args = ModalRoute.of(context)!.settings.arguments as Map;
+            return BasePage(index: args['index']);
+          },
           '/plans': (context) => const PlansPage(),
           '/plans/details': (context) {
             final args = ModalRoute.of(context)!.settings.arguments as Map;

@@ -39,7 +39,12 @@ class CardHome extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed('/invoices');
+                    Navigator.of(context).pushReplacementNamed(
+                      '/base',
+                      arguments: {
+                        'index': 2,
+                      },
+                    );
                   },
                   child: Chip(
                     label: Text(

@@ -2,27 +2,41 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
 import 'package:red_host_app/src/app/features/hub/presentation/pages/hub_page.dart';
+import 'package:red_host_app/src/app/features/invoices/presentation/pages/invoices_page.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/pages/plans_page.dart';
 
 class BasePage extends StatefulWidget {
-  const BasePage({super.key});
+  const BasePage({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   State<BasePage> createState() => _BasePageState();
 }
 
 class _BasePageState extends State<BasePage> {
-  PageController pageController = PageController();
+  late PageController pageController;
 
   final List<Widget> _pages = [
     const HomePage(),
     const PlansPage(),
-    const Center(
-      child: Text('Page 3'),
-    ),
+    const InvoicesPage(),
     const HubPage(),
   ];
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    pageController = PageController(initialPage: widget.index);
+    setState(() {
+      _currentIndex = widget.index;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
