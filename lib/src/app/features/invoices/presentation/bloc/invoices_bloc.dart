@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:red_host_app/src/app/features/invoices/domain/entities/invoice_entity.dart';
 
 part 'invoices_event.dart';
 part 'invoices_state.dart';

@@ -6,3 +6,9 @@ abstract class InvoicesEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetInvoicesEvent extends InvoicesEvent {
+  final String clientId;
+
+  const GetInvoicesEvent({required this.clientId});
+}
