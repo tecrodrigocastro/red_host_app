@@ -8,6 +8,7 @@
     <td><img src="./design_system/assets/images/home.png" alt="Home Page" style="width:200px;"/></td>
     <td><img src="./design_system/assets/images/hub.png" alt="Hub Page" style="width:200px;"/></td>
     <td><img src="./design_system/assets/images/plans2.png" alt="Plans Page" style="width:200px;"/></td>
+    <td><img src="./design_system/assets/images/faturas.png" alt="Invoice Page" style="width:200px;"/></td>
   </tr>
 </table>
 
