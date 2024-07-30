@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:red_host_app/src/app/features/invoices/data/datasources/remote_datasource_invoice.dart';
 import 'package:red_host_app/src/app/features/invoices/data/models/invoice_model.dart';
@@ -22,6 +24,7 @@ class InvoiceRepositoryImpl implements InvoiceRepositoryInterface {
       final response = await _remoteDatasource.get(
         RestClientRequest(path: '/api/invoices/client/$idClient'),
       );
+      log(response.data.toString());
       if (response.statusCode == 200) {
         final invoices = AppResponse<List<InvoiceEntity>>.fromJson(
           response.data,

@@ -6,6 +6,7 @@ import 'package:red_host_app/src/app/features/auth/presentation/pages/login_page
 import 'package:red_host_app/src/app/features/auth/presentation/pages/register_page.dart';
 import 'package:red_host_app/src/app/features/base/presentation/pages/base_page.dart';
 import 'package:red_host_app/src/app/features/home/presentation/pages/home_page.dart';
+import 'package:red_host_app/src/app/features/invoices/presentation/bloc/invoices_bloc.dart';
 import 'package:red_host_app/src/app/features/invoices/presentation/pages/invoices_page.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/bloc/plans_bloc.dart';
 import 'package:red_host_app/src/app/features/plans/presentation/pages/plan_details_page.dart';
@@ -22,6 +23,7 @@ class AppWidget extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => injector<AuthBloc>()),
         BlocProvider(create: (context) => injector<PlansBloc>()),
+        BlocProvider(create: (context) => injector<InvoicesBloc>()),
       ],
       child: MaterialApp(
         title: 'RED HOST',
