@@ -4,6 +4,10 @@ import 'package:red_host_app/src/app/features/auth/data/repositories/auth_reposi
 import 'package:red_host_app/src/app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:red_host_app/src/app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:red_host_app/src/app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:red_host_app/src/app/features/invoices/data/datasources/remote_datasource_invoice.dart';
+import 'package:red_host_app/src/app/features/invoices/data/repositories/invoice_repository_impl.dart';
+import 'package:red_host_app/src/app/features/invoices/domain/usecases/get_invoices_by_id_usecase.dart';
+import 'package:red_host_app/src/app/features/invoices/presentation/bloc/invoices_bloc.dart';
 import 'package:red_host_app/src/app/features/plans/data/datasources/plans_remote_datasource.dart';
 import 'package:red_host_app/src/app/features/plans/data/repositories/plan_repository_impl.dart';
 import 'package:red_host_app/src/app/features/plans/domain/usecases/get_plans_usecase.dart';
@@ -74,4 +78,30 @@ void initDependencies() {
   injector.registerLazySingleton<PlansBloc>(() => PlansBloc(
         getPlansUsecase: injector<GetPlansUsecase>(),
       ));
+
+  // Invoices
+
+  injector.registerFactory<InvoiceRemoteDatasource>(
+    () => InvoiceRemoteDatasource(
+      restClient: injector<RestClientDioImpl>(),
+    ),
+  );
+
+  injector.registerFactory<InvoiceRepositoryImpl>(
+    () => InvoiceRepositoryImpl(
+      remoteDatasource: injector<InvoiceRemoteDatasource>(),
+    ),
+  );
+
+  injector.registerFactory<GetInvoicesByIdUsecase>(
+    () => GetInvoicesByIdUsecase(
+      repository: injector<InvoiceRepositoryImpl>(),
+    ),
+  );
+
+  injector.registerLazySingleton<InvoicesBloc>(
+    () => InvoicesBloc(
+      getInvoicesByIdUsecase: injector<GetInvoicesByIdUsecase>(),
+    ),
+  );
 }
