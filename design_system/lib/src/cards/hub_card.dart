@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class HubCard extends StatelessWidget {
@@ -9,23 +11,28 @@ class HubCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Card(
-      elevation: 5,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: 40,
-          ),
-          Text(
-            title,
-            style: theme.textTheme.bodyMedium!.copyWith(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
+    return InkWell(
+      onTap: () {
+        log('HubCard $title tapped');
+      },
+      child: Card(
+        elevation: 5,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 40,
             ),
-          ),
-        ],
+            Text(
+              title,
+              style: theme.textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
