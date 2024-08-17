@@ -30,17 +30,13 @@ class AuthRepositoryImpl implements AuthRepositoryInterface {
       if (response.statusCode == 200) {
         final user = AppResponse<UserEntity>.fromJson(
             response.data, (dynamic json) => UserModel.fromJson(json));
-        Output<UserEntity> output = Right(user);
-        return output;
+        return Right(user);
       }
-      Output<UserEntity> output =
-          Left(DefaultException(message: response.data['message']));
-      return output;
+      return Left(DefaultException(message: response.data['message']));
     } catch (e) {
-      Output<UserEntity> output = const Left(
-        DefaultException(message: 'Erro ao realizar login'),
+      return Left(
+        DefaultException(message: 'Erro ao realizar login $e'),
       );
-      return output;
     }
   }
 
