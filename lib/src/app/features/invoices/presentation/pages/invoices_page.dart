@@ -1,3 +1,4 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:red_host_app/src/app/features/auth/presentation/bloc/auth_bloc.dart';
@@ -73,40 +74,7 @@ class _InvoicesPageState extends State<InvoicesPage> {
                           itemCount: state.invoices.length,
                           itemBuilder: (context, index) {
                             final invoice = state.invoices[index];
-                            return Container(
-                              height: 70,
-                              margin: const EdgeInsets.only(bottom: 10),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    theme.primaryColor,
-                                    theme.primaryColor.withOpacity(0.5),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: ListTile(
-                                title: Text(
-                                  invoice.plan.name,
-                                  style: theme.textTheme.bodyMedium!.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  'R\$ ${invoice.amount.toStringAsFixed(2)}',
-                                  style: theme.textTheme.bodyMedium!.copyWith(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                trailing: ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Acessar',
-                                    style: theme.textTheme.bodyMedium,
-                                  ),
-                                ),
-                              ),
-                            );
+                            return InvoiceCard(invoice: invoice);
                           },
                         );
                       }
